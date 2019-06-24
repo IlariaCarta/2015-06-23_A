@@ -1,13 +1,19 @@
 package it.polito.tdp.music;
 
 import java.net.URL;
+import java.time.Month;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.music.model.Model;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 public class MusicController {
+	
+	Model model = new Model();
 
     @FXML
     private ResourceBundle resources;
@@ -16,7 +22,7 @@ public class MusicController {
     private URL location;
 
     @FXML
-    private ComboBox<?> boxMese;
+    private ComboBox<Month> boxMese;
 
     @FXML
     private Button btnArtisti;
@@ -26,6 +32,16 @@ public class MusicController {
 
     @FXML
     private TextArea txtResult;
+    
+    @FXML
+    void doDistanza(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void doElenco(ActionEvent event) {
+    	
+    }
 
     @FXML
     void initialize() {
@@ -35,4 +51,11 @@ public class MusicController {
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'MusicA.fxml'.";
 
     }
+
+	public void setModel(Model model) {
+		this.model = model;
+		
+		boxMese.getItems().addAll(model.getMonths());
+		
+	}
 }
